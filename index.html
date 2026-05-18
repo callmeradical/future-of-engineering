@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>On the Future of Engineering — A Dialogue at the Stoa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=JetBrains+Mono:wght@400;500&family=Cardo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1410;
+    --ink-soft: #2d2520;
+    --ink-muted: #6b5d52;
+    --parchment: #f4ede0;
+    --parchment-deep: #e8dcc4;
+    --parchment-shadow: #d4c4a3;
+    --accent: #8b2f1f;
+    --accent-deep: #5c1d12;
+    --gold: #a67c2e;
+    --rule: #c9b896;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Cardo', 'Cormorant Garamond', Georgia, serif;
+    background: var(--parchment);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 19px;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(at 20% 30%, rgba(166, 124, 46, 0.04) 0%, transparent 50%),
+      radial-gradient(at 80% 70%, rgba(139, 47, 31, 0.03) 0%, transparent 50%);
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' /%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.35'/%3E%3C/svg%3E");
+    opacity: 0.08;
+    pointer-events: none;
+    z-index: 1;
+    mix-blend-mode: multiply;
+  }
+
+  .container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 32px;
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ============ NAVIGATION ============ */
+  nav.toc {
+    position: fixed;
+    top: 50%;
+    right: 32px;
+    transform: translateY(-50%);
+    z-index: 100;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    color: var(--ink-muted);
+  }
+
+  nav.toc ol {
+    list-style: none;
+    border-left: 1px solid var(--rule);
+    padding-left: 16px;
+  }
+
+  nav.toc li {
+    margin: 14px 0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+  }
+
+  nav.toc li::before {
+    content: '';
+    position: absolute;
+    left: -20px;
+    top: 50%;
+    width: 4px;
+    height: 1px;
+    background: var(--rule);
+    transition: all 0.3s ease;
+  }
+
+  nav.toc li:hover,
+  nav.toc li.active {
+    color: var(--accent);
+  }
+
+  nav.toc li.active::before {
+    width: 12px;
+    left: -28px;
+    background: var(--accent);
+  }
+
+  nav.toc a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  @media (max-width: 1200px) {
+    nav.toc { display: none; }
+  }
+
+  /* ============ HERO ============ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 80px 0;
+    position: relative;
+  }
+
+  .hero-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--ink-muted);
+    margin-bottom: 64px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .hero-meta .ornament {
+    flex: 1;
+    height: 1px;
+    background: var(--rule);
+    margin: 0 24px;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(56px, 9vw, 128px);
+    line-height: 0.95;
+    letter-spacing: -0.03em;
+    margin-bottom: 48px;
+    color: var(--ink);
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+    font-weight: 300;
+  }
+
+  .hero-subtitle {
+    font-style: italic;
+    font-size: 24px;
+    line-height: 1.5;
+    color: var(--ink-soft);
+    max-width: 560px;
+    margin-bottom: 56px;
+  }
+
+  .hero-epigraph {
+    border-left: 2px solid var(--accent);
+    padding: 8px 0 8px 24px;
+    max-width: 480px;
+    font-size: 17px;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  .hero-epigraph cite {
+    display: block;
+    margin-top: 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-style: normal;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    color: var(--ink-muted);
+  }
+
+  .scroll-cue {
+    position: absolute;
+    bottom: 40px;
+    left: 32px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--ink-muted);
+    animation: pulse 2.5s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 0.4; transform: translateY(0); }
+    50% { opacity: 1; transform: translateY(4px); }
+  }
+
+  /* ============ SECTIONS ============ */
+  section.book {
+    padding: 120px 0 80px;
+    position: relative;
+  }
+
+  .book-marker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .book-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 400;
+    font-size: clamp(40px, 5vw, 64px);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 16px;
+  }
+
+  .book-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .book-dek {
+    font-style: italic;
+    font-size: 22px;
+    color: var(--ink-soft);
+    margin-bottom: 48px;
+    max-width: 600px;
+    line-height: 1.5;
+  }
+
+  .book-rule {
+    height: 1px;
+    background: linear-gradient(to right, var(--accent) 0%, var(--accent) 60px, var(--rule) 60px, var(--rule) 100%);
+    margin-bottom: 56px;
+  }
+
+  /* ============ PROSE ============ */
+  .prose p {
+    margin-bottom: 28px;
+    text-indent: 0;
+  }
+
+  .prose p.lede::first-letter {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 72px;
+    font-weight: 500;
+    line-height: 0.85;
+    float: left;
+    padding: 6px 12px 0 0;
+    color: var(--accent);
+  }
+
+  .prose strong {
+    font-weight: 700;
+    color: var(--ink);
+  }
+
+  .prose em {
+    font-style: italic;
+  }
+
+  .prose .pull {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 30px;
+    line-height: 1.3;
+    font-style: italic;
+    color: var(--accent-deep);
+    padding: 32px 0 32px 32px;
+    margin: 48px 0;
+    border-left: 3px solid var(--accent);
+    position: relative;
+  }
+
+  .prose .pull::before {
+    content: '"';
+    position: absolute;
+    left: 16px;
+    top: -16px;
+    font-size: 72px;
+    color: var(--accent);
+    opacity: 0.25;
+    font-family: 'Cormorant Garamond', serif;
+  }
+
+  /* ============ DIALOGUE ============ */
+  .dialogue {
+    margin: 48px 0;
+    padding: 32px 36px;
+    background: var(--parchment-deep);
+    border: 1px solid var(--rule);
+    position: relative;
+  }
+
+  .dialogue::before {
+    content: 'Dialogue';
+    position: absolute;
+    top: -10px;
+    left: 24px;
+    background: var(--parchment);
+    padding: 0 12px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--ink-muted);
+  }
+
+  .dialogue .speaker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.2em;
+    margin-top: 20px;
+    margin-bottom: 8px;
+    color: var(--accent);
+  }
+
+  .dialogue .speaker:first-child { margin-top: 0; }
+
+  .dialogue .speaker.lead { color: var(--accent-deep); }
+  .dialogue .speaker.junior { color: var(--gold); }
+
+  .dialogue p {
+    font-size: 17px;
+    line-height: 1.65;
+    margin-bottom: 0;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+
+  /* ============ COMPARISON ============ */
+  .comparison {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    margin: 56px 0;
+    border: 1px solid var(--rule);
+  }
+
+  .comparison > div {
+    padding: 32px;
+    position: relative;
+  }
+
+  .comparison > div:first-child {
+    background: var(--parchment-deep);
+    border-right: 1px solid var(--rule);
+  }
+
+  .comparison h4 {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    margin-bottom: 16px;
+    color: var(--ink-muted);
+  }
+
+  .comparison h4.then { color: var(--ink-muted); }
+  .comparison h4.now { color: var(--accent); }
+
+  .comparison ul {
+    list-style: none;
+  }
+
+  .comparison li {
+    font-family: 'Cardo', serif;
+    font-size: 17px;
+    padding: 10px 0;
+    border-bottom: 1px dashed var(--rule);
+    line-height: 1.4;
+  }
+
+  .comparison li:last-child { border-bottom: none; }
+
+  .comparison li::before {
+    content: '— ';
+    color: var(--ink-muted);
+  }
+
+  @media (max-width: 700px) {
+    .comparison {
+      grid-template-columns: 1fr;
+    }
+    .comparison > div:first-child {
+      border-right: none;
+      border-bottom: 1px solid var(--rule);
+    }
+  }
+
+  /* ============ TENETS ============ */
+  .tenets {
+    margin: 56px 0;
+    counter-reset: tenet;
+  }
+
+  .tenet {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 32px;
+    padding: 32px 0;
+    border-top: 1px solid var(--rule);
+    counter-increment: tenet;
+  }
+
+  .tenet:last-child {
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .tenet-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 56px;
+    line-height: 1;
+    color: var(--accent);
+    font-weight: 300;
+    font-style: italic;
+  }
+
+  .tenet-num::before {
+    content: counter(tenet, upper-roman);
+  }
+
+  .tenet h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 28px;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    letter-spacing: -0.01em;
+  }
+
+  .tenet p {
+    font-size: 17px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+  }
+
+  @media (max-width: 600px) {
+    .tenet {
+      grid-template-columns: 1fr;
+      gap: 8px;
+    }
+    .tenet-num {
+      font-size: 40px;
+    }
+  }
+
+  /* ============ MARGINALIA / QUESTIONS ============ */
+  .question {
+    margin: 40px 0;
+    padding: 24px 28px;
+    background: rgba(166, 124, 46, 0.08);
+    border-left: 3px solid var(--gold);
+    position: relative;
+  }
+
+  .question::before {
+    content: 'A junior asks';
+    position: absolute;
+    top: -8px;
+    left: 16px;
+    background: var(--parchment);
+    padding: 0 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+  }
+
+  .question p {
+    font-style: italic;
+    font-size: 18px;
+    color: var(--ink-soft);
+    margin: 0;
+    line-height: 1.55;
+  }
+
+  .answer {
+    margin: 24px 0 40px;
+    padding: 24px 28px;
+    background: rgba(139, 47, 31, 0.06);
+    border-left: 3px solid var(--accent);
+    position: relative;
+  }
+
+  .answer::before {
+    content: 'The lead replies';
+    position: absolute;
+    top: -8px;
+    left: 16px;
+    background: var(--parchment);
+    padding: 0 10px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.25em;
+    color: var(--accent);
+  }
+
+  .answer p {
+    font-size: 17px;
+    color: var(--ink);
+    margin: 0;
+    line-height: 1.65;
+  }
+
+  .answer p + p {
+    margin-top: 14px;
+  }
+
+  /* ============ FOOTER ============ */
+  footer {
+    padding: 120px 0 80px;
+    text-align: center;
+    border-top: 1px solid var(--rule);
+    margin-top: 80px;
+  }
+
+  footer .ornament {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    color: var(--accent);
+    margin-bottom: 32px;
+    letter-spacing: 0.5em;
+  }
+
+  footer p {
+    font-style: italic;
+    color: var(--ink-muted);
+    font-size: 17px;
+    max-width: 480px;
+    margin: 0 auto 12px;
+  }
+
+  footer .meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.3em;
+    color: var(--ink-muted);
+    margin-top: 48px;
+  }
+
+  /* ============ ANIMATIONS ============ */
+  .fade-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+
+  .fade-up.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* ============ HORIZONTAL RULE ============ */
+  hr.fancy {
+    border: none;
+    text-align: center;
+    margin: 64px 0;
+    color: var(--accent);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 24px;
+    letter-spacing: 0.5em;
+  }
+
+  hr.fancy::before {
+    content: '⁂';
+  }
+</style>
+</head>
+<body>
+
+<nav class="toc">
+  <ol>
+    <li data-target="prologue"><a href="#prologue">Prologue</a></li>
+    <li data-target="book-i"><a href="#book-i">I · On Agile</a></li>
+    <li data-target="book-ii"><a href="#book-ii">II · On Measure</a></li>
+    <li data-target="book-iii"><a href="#book-iii">III · On Substrate</a></li>
+    <li data-target="book-iv"><a href="#book-iv">IV · On Work</a></li>
+    <li data-target="book-v"><a href="#book-v">V · On Refactor</a></li>
+    <li data-target="book-vi"><a href="#book-vi">VI · On Principle</a></li>
+    <li data-target="book-vii"><a href="#book-vii">VII · On Cost</a></li>
+    <li data-target="book-viii"><a href="#book-viii">VIII · On the Stoa</a></li>
+    <li data-target="tenets"><a href="#tenets">Tenets</a></li>
+  </ol>
+</nav>
+
+<div class="container">
+
+  <header class="hero">
+    <div class="hero-meta">
+      <span>A Treatise</span>
+      <span class="ornament"></span>
+      <span>MMXXVI</span>
+    </div>
+
+    <h1 class="hero-title">On the Future<br>of <em>Engineering</em></h1>
+
+    <p class="hero-subtitle">A dialogue concerning the practice of building software in the age of agentic collaborators — and the place of those who would learn the craft.</p>
+
+    <blockquote class="hero-epigraph">
+      The Stoics taught beneath a painted colonnade. They did not lecture so much as <em>argue, defend, and revise</em> in the open air. The juniors among them did not take notes. They asked questions.
+      <cite>— The Stoa Poikilē, recalled</cite>
+    </blockquote>
+
+    <div class="scroll-cue">Scroll · turn the page</div>
+  </header>
+
+  <!-- ============ PROLOGUE ============ -->
+  <section class="book" id="prologue">
+    <div class="book-marker">Prologue</div>
+    <h2 class="book-title">The colonnade,<br>rebuilt in <em>code</em></h2>
+    <p class="book-dek">A note on method, and on why this is written as a conversation rather than a manual.</p>
+    <div class="book-rule"></div>
+
+    <div class="prose">
+      <p class="lede">Engineering practice is undergoing a quiet inversion. For two decades, the dominant question was how to organize humans around the cost of producing software. That cost is collapsing. Agents now write, test, and ship code at velocities that make the rituals of the previous era look like the elaborate scaffolding they always were. What remains is the harder question — what humans are <em>for</em>, what they should be <em>doing</em>, and how the craft is to be <em>taught</em> when the doing is no longer the bottleneck.</p>
+
+      <p>This treatise is not a methodology. Methodologies presume an answer. What follows is a set of provisional convictions, written down so they can be argued with — by readers, by colleagues, and, in the manner of the Stoa, by juniors who have earned the right to question by attending closely.</p>
+
+      <div class="pull">The values of Agile endure. Its rituals do not. What replaces them is not less rigorous but differently rigorous — externalized into artifacts, made legible to humans and agents alike.</div>
+
+      <p>We proceed in eight short books. Each takes up one inheritance of the Agile era and examines what survives, what mutates, and what must be invented. The final book takes up the question of pedagogy — of how the young are to learn a craft whose entry-level work has been automated, and proposes the stoa as the model of a teaching practice fit for our moment.</p>
+    </div>
+  </section>
+
+  <!-- ============ BOOK I ============ -->
+  <section class="book" id="book-i">
+    <div class="book-marker">Book I</div>
+    <h2 class="book-title">On <em>Agile</em>,<br>and what survives it</h2>
+    <p class="book-dek">The Manifesto's values were never the problem. The implementation was an accident of its constraints.</p>
+    <div class="book-rule"></div>
+
+    <div class="prose">
+      <p class="lede">Agile was a response to a specific bottleneck. Humans were slow, expensive, and bad at predicting what they would build. Nearly every ritual of the Agile canon — standups, sprints, story points, retrospectives — exists as scaffolding around those three constraints. The Manifesto's stated values are durable: <strong>individuals and interactions, working software, collaboration, responding to change.</strong> But its rituals are an implementation, and implementations are contingent on the cost structures of their era.</p>
+
+      <p>When the cost of producing working software falls by an order of magnitude, the implementation no longer fits. This is not a failure of Agile. It is the success of Agile delivering us to a new constraint: not the cost of building, but the quality of <em>intent</em>, and the legibility of <em>judgment</em>.</p>
+
+      <div class="question">
+        <p>If the values endure, why does it matter whether we keep the rituals? Surely a daily standup costs little and may still be useful.</p>
+      </div>
+
+      <div class="answer">
+        <p>The ritual costs little only when its premises hold. A standup exists because humans forget context overnight and need a synchronizing checkpoint. Agents do not forget. The premise has changed, and the ritual now consumes time it does not earn back. Worse, it gives the team the comforting impression of coordination while the actual coordination — among agents, against a shared codebase — is happening elsewhere and unattended.</p>
+        <p>The question is not <em>does this ritual cost little</em>. It is <em>does this ritual still address the constraint it was invented for</em>. Most do not.</p>
+      </div>
+
+      <div class="comparison">
+        <div>
+          <h4 class="then">The Era of Human Hands</h4>
+          <ul>
+            <li>Standups synchronize forgotten context</li>
+            <li>Sprints contain cognitive load</li>
+            <li>Story points measure relative effort</li>
+            <li>Retros surface what only humans feel</li>
+            <li>Velocity tracks improving capacity</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="now">The Era of Agentic Collaboration</h4>
+          <ul>
+            <li>Context is durable, queryable, replayable</li>
+            <li>Throughput is elastic, near-zero marginal</li>
+            <li>Effort is no longer the scarce input</li>
+            <li>Friction signals do not arise from agents</li>
+            <li>The instrument must point elsewhere</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BOOK II ============ -->
+  <section class="book" id="book-ii">
+    <div class="book-marker">Book II</div>
+    <h2 class="book-title">On <em>measure</em>,<br>and the obsolescence of points</h2>
+    <p class="book-dek">A team measures itself by the system it operates, not the labor it expends.</p>
+    <div class="book-rule"></div>
+
+    <div class="prose">
+      <p class="lede">Story points were a workaround. They existed because the honest measures — did the customer benefit, did the system remain healthy — were too slow, too expensive, or too contested to use as an inner loop. The proxy was scaffolding around a constraint that no longer binds. When work is cheap and observability is plentiful, we no longer need a proxy. We can measure the thing itself.</p>
+
+      <p>The thing itself is twofold. First, the team's <strong>ability to respond</strong> — measured in deployment frequency, lead time for change, mean time to recovery, change failure rate, and the time between feedback received and feedback addressed. These are not new. They are DORA. What is new is that they are now <em>operationally feasible</em> for ordinary teams, because the cost of building and maintaining the infrastructure to achieve them has collapsed.</p>
+
+      <p>Second, <strong>customer response</strong> — the ground truth of whether what was built was worth building. This metric is laggy, noisy, and, for some kinds of work, absent entirely. It is therefore not a sufficient inner loop, but it is the only sufficient outer loop. The two measures must be paired. DORA tells you whether your system is healthy. Customer response tells you whether you are aiming the healthy system at the right target.</p>
+
+      <div class="pull">The output of the system is everyone's responsibility. This is how a team measures itself, and how the organization should perceive the team.</div>
+
+      <div class="question">
+        <p>What of the work that has no customer? Platform changes, security hardening, internal tooling — these have no conversion rate to watch. Do they become invisible?</p>
+      </div>
+
+      <div class="answer">
+        <p>This is the deepest objection to outcome-only measurement, and it must be answered directly. Work without a measurable customer is not invisible — it is <em>upstream</em>. Its value is realized in the customer-facing work that depends on it. Platform health, security posture, observability coverage — these are measured by their effects on the operational metrics, not by their own KPIs.</p>
+        <p>If the DORA numbers degrade, look upstream. If they hold under increasing load and complexity, the upstream work is doing its job. The team's job is to keep both the upstream substrate and the downstream outcomes in view, and not to confuse activity in either with progress.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BOOK III ============ -->
+  <section class="book" id="book-iii">
+    <div class="book-marker">Book III</div>
+    <h2 class="book-title">On the <em>substrate</em><br>of collaboration</h2>
+    <p class="book-dek">When some of your collaborators are not human, coordination cannot remain tacit.</p>
+    <div class="book-rule"></div>
+
+    <div class="prose">
+      <p class="lede">Human teams coordinate through tribal knowledge, Slack threads, half-remembered decisions, and the senior engineer's intuition. None of these are legible to agents. None of them are durable across personnel changes. None of them scale beyond the number of people who can hold the system in their heads. Agentic collaboration forces what good teams should have done anyway: <strong>externalize the coordination substrate into artifacts that humans and agents access on equal terms.</strong></p>
+
+      <p>The substrate has two parts. The first is a <strong>shared kanban</strong> against which all participants — human and agent — claim work, declare intent, and release locks. Not a Jira board updated after the fact, but a live, queryable representation of what is being done, by whom, and against what context. The second is an <strong>event-sourced intent log</strong>: a temporal record of what the product is supposed to be, appended to as the team's understanding evolves, and replayable by any new participant — junior engineer, agent, or auditor — to reconstruct the reasoning that led to the present.</p>
+
+      <div class="dialogue">
+        <div class="speaker lead">Lead</div>
+        <p>The intent log is the team's mind made durable. It is the difference between a team that knows what it is doing and a team that merely produces.</p>
+        <div class="speaker junior">Junior</div>
+        <p>But intent conflicts — when two people declare incompatible futures for the same system — those cannot be resolved by appending to a log.</p>
+        <div class="speaker lead">Lead</div>
+        <p>Correct. Conflicts in intent are resolved upstream of the log, in conversation, by humans. That is the irreducible human work. The log records the resolution, not the conflict. When we agree, we append. When we cannot agree, we do not task. This is the discipline.</p>
+      </div>
+
+      <p>This is the deeper point. Agile imagined that ceremony among humans would carry the load of coordination. The new model abandons ceremony for <em>infrastructure</em>. The values — collaboration, working software, responding to change — survive intact. The mechanism is now an artifact rather than a meeting.</p>
+    </div>
+  </section>
+
+  <!-- ============ BOOK IV ============ -->
+  <section class="book" id="book-iv">
+    <div class="book-marker">Book IV</div>
+    <h2 class="book-title">On the unit of <em>work</em></h2>
+    <p class="book-dek">Tracer bullets, not tickets. Vertical slices that prove the whole.</p>
+    <div class="book-rule"></div>
+
+    <div class="prose">
+      <p class="lede">The traditional ticket is a poor unit of work for an agent. It encodes a horizontal task — touch this file, modify this function, add this endpoint — that is locally sensible but globally underspecified. An agent given such a ticket produces locally correct code that may or may not cohere with what the feature actually needs. The result is the great pathology of agentic engineering: a million lines of plausible code that solves no problem.</p>
+
+      <p>The remedy is the <strong>tracer bullet</strong> — a thin vertical slice through the entire stack, end to end, that proves the feature works while remaining bounded enough for an agent to complete. A tracer bullet forces the agent to confront integration assumptions, surfaces architectural conflicts immediately, and produces deployable evidence rather than partial scaffolding. Tasks are decomposed from PRDs and LDDs into tracer bullets. Agents pull bullets from the shared board. Each bullet that lands is a tiny, complete demonstration that the system is converging toward the intent.</p>
+
+      <div class="question">
+        <p>What of work that resists vertical slicing? A migration from REST to gRPC. A latency improvement at the platform layer. These cannot be tracer bullets without absurdity.</p>
+      </div>
+
+      <div class="answer">
+        <p>You have identified the second work primitive, which I will call the <strong>substrate change</strong>. Substrate changes are inherently horizontal — they reshape the ground that tracer bullets run on. They cannot proceed concurrently with feature work against the same surface, because they invalidate the assumptions feature work depends on.</p>
+        <p>The board therefore has at least two lanes. The feature lane runs tracer bullets continuously. The substrate lane runs during dedicated windows, with priority and exclusion: when a substrate change is in flight, feature work against the affected surface is suspended. This is honest about how software actually evolves, and it eliminates the failure mode where three agents diligently build against a surface a fourth agent is reshaping.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BOOK V ============ -->
+  <section class="book" id="book-v">
+    <div class="book-marker">Book V</div>
+    <h2 class="book-title">On <em>refactor</em>,<br>and the rhythm of repair</h2>
+    <p class="book-dek">Technical debt has a cadence, not a backlog position.</p>
+    <div class="book-rule"></div>
+
+    <div class="prose">
+      <p class="lede">In the previous era, technical debt was treated as a ticket competing for priority against feature work. It nearly always lost. The result was a slow accumulation of substrate decay, paid down in occasional and grudging "stabilization sprints" that were really refactor windows in disguise. The new model makes the rhythm explicit. <strong>Refactor work is a class of work with blocking semantics, addressed in dedicated windows between releases.</strong></p>
+
+      <p>This is not a concession to engineering vanity. It is a structural necessity. Agents working in parallel against a codebase produce coherence drift faster than any individual agent can perceive — seventeen retry implementations, each locally correct, none consistent. Without scheduled repair, drift compounds until the codebase is no longer reasoned about. The product stalls not from lack of features but from the impossibility of adding any.</p>
+
+      <div class="pull">Features create drift. Reviews detect it. Intent reconciles it. Refactors resolve it. The loop must close, or the codebase decays.</div>
+
+      <div class="dialogue">
+        <div class="speaker junior">Junior</div>
+        <p>What triggers a refactor? In the old model, a senior engineer would feel friction — would keep tripping over the same awkwardness — and that frustration became the signal.</p>
+        <div class="speaker lead">Lead</div>
+        <p>The friction signal is precisely what we lose. Agents do not feel friction. They route around it efficiently and continue. This is why principled review — the subject of the next book — becomes load-bearing. It is the deliberate, scheduled mechanism that replaces the senior engineer's accumulated frustration with structured detection of drift.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ BOOK VI ============ -->
+  <section class="book" id="book-vi">
+    <div class="book-marker">Book VI</div>
+    <h2 class="book-title">On <em>principle</em>,<br>and the codebase's conscience</h2>
+    <p class="book-dek">SOLID. DRY. Twelve-Factor. Not as gospel but as concrete, versioned commitments — reviewed regularly, defended publicly.</p>
+    <div class="book-rule"></div>
+
+    <div class="prose">
+      <p class="lede">The naive intuition is that agents, being rule-followers, will produce principled code if simply told the principles. The actual dynamic is the opposite. Agents follow the local rules of the task they are given. They will produce code that is locally correct and globally incoherent unless something is actively defending the global shape of the system. The principles — SOLID, DRY, Twelve-Factor, whatever the team commits to — must be enforced externally and continuously, because the cognitive cost that once enforced them tacitly is no longer being paid.</p>
+
+      <p>This makes the <strong>scheduled principled review</strong> the load-bearing ritual of the new era. Where does the codebase violate the commitments the team has made? Where is duplication suggesting a missing abstraction? Where do dependencies point in directions that will trap us? Each finding, if it crosses a threshold, becomes refactor intent. The review is not aesthetic. It is the codebase's conscience, externalized into a recurring practice.</p>
+
+      <div class="question">
+        <p>How is this different from the architecture reviews we already do?</p>
+      </div>
+
+      <div class="answer">
+        <p>Three differences. First, cadence — it is scheduled, not summoned in moments of crisis. Second, output — it generates refactor intent on the shared substrate, not advisory notes. Third, authority — its findings have teeth, meaning they enter the substrate lane with priority over feature work when they exceed a defined threshold.</p>
+        <p>The principles themselves should live in the intent log, versioned and operationalized. Not "we follow DRY" as aphorism, but: "if logic appears in two places with the same reason to change, extract it; with different reasons, leave it." Agents need operational form. Humans need versioned commitments they can argue with.</p>
+      </div>
+
+      <div class="pull">The senior engineer's role is not to write the hard code. It is to be the codebase's conscience — to lead the principled review, to defend the shape of the system, to know when to break it.</div>
+    </div>
+  </section>
+
+  <!-- ============ BOOK VII ============ -->
+  <section class="book" id="book-vii">
+    <div class="book-marker">Book VII</div>
+    <h2 class="book-title">On <em>determinism</em><br>and the profile of cost</h2>
+    <p class="book-dek">Every operation has a determinism level and a cost trajectory. The discipline is to be honest about both.</p>
+    <div class="book-rule"></div>
+
+    <div class="prose">
+      <p class="lede">The current era of agentic engineering operates inside a market condition that will not persist. Token pricing is subsidized to capture adoption. The models we depend on will be deprecated within a year. The contracts our organizations have signed bind us to spend levels chosen against assumptions that no longer hold. And the teams left to operate these systems are smaller than the teams that built them. Each factor alone is manageable. Stacked, they form a compounding liability that the math at the point of adoption does not capture, because the math assumes today's prices and today's headcount will endure. They will not.</p>
+
+      <p>The discipline that meets this condition is not a slogan. It is a measurement practice. Every operation a system performs sits somewhere on a spectrum from <strong>pure code</strong> to <strong>pure inference</strong>, and every operation carries a cost profile — what it costs to perform today, what it would cost at its theoretical floor, and the trajectory connecting them. The engineering work is to characterize these profiles honestly, match the determinism level to what the scenario actually permits, and continuously move operations toward their cost floor as the scenarios they serve become legible enough to encode.</p>
+
+      <div class="pull">An <code>if</code> statement is free, infinitely auditable, deterministically testable, and will run on any cloud in a decade. A model inference is none of those things. The default should reflect the asymmetry.</div>
+
+      <p>This is not anti-inference. There are scenarios whose input space is genuinely open, whose desired output requires novel judgment, whose conditions vary in ways no rule can anticipate. For these, inference does real work, and forcing determinism on them is its own pathology — brittleness disguised as discipline. The principle is not <em>deterministic-maximalism</em>. It is <strong>scenario-fit determinism</strong>: for each operation, match the determinism level to the structure the scenario actually has, with a strong default toward determinism because the bias of the field is currently toward over-using inference.</p>
+
+      <div class="comparison">
+        <div>
+          <h4 class="then">Cost Today</h4>
+          <ul>
+            <li>Tokens consumed per execution</li>
+            <li>Retries and fallback paths</li>
+            <li>Latency tax on calling systems</li>
+            <li>Supplier-set pricing exposure</li>
+            <li>Operational variability and incident load</li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="now">Cost at the Floor</h4>
+          <ul>
+            <li>Compute cost of deterministic execution</li>
+            <li>Minimum inference for true ambiguity</li>
+            <li>Predictable, auditable, portable</li>
+            <li>Independent of supplier pricing moves</li>
+            <li>Stable under deprecation cycles</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="question">
+        <p>How do I know whether a given operation can be moved toward determinism, or whether the inference it requires is irreducible?</p>
+      </div>
+
+      <div class="answer">
+        <p>Ask three questions of the scenario the operation serves. <em>Is the input space bounded?</em> If the operation receives a known set of inputs in known shapes, determinism is achievable. If it receives open-ended natural language or arbitrary user intent, inference is doing real work. <em>Is the desired output specifiable?</em> If you can write down the rule that maps input to output, the rule is the implementation. If the mapping requires judgment that resists rule-writing, inference earns its place. <em>Are the conditions stable?</em> If the scenario recurs with the same structure, the procedure that handles it can be canonicalized. If the structure shifts under you, premature canonicalization will break.</p>
+        <p>When all three answers point toward determinism, the inference cost is waste. When even one points toward inference, the inference is doing work. The honest engineer says so in either direction, and resists the temptation to reach for inference because it is novel or to force determinism because it is cheap.</p>
+      </div>
+
+      <p>The principled review thus gains its sharpest instrument. For each operation in the system, the review asks: <strong>what is its determinism level, what is its cost profile, what is its trajectory?</strong> A successful system shows a growing inventory of operations whose cost is dominated by deterministic execution, a stable or shrinking set of operations that genuinely require inference, and an aggregate token cost per unit of work that declines over time. A failing system shows the inverse — operations whose inference cost is flat or growing, with no conversion work happening, with the team's exposure to supplier pricing increasing rather than decreasing.</p>
+
+      <div class="pull">The measure of an agentic system is not what it can do. It is whether the cost of what it does is converging toward the floor — and whether its dependency on supplier pricing is shrinking, not growing, over time.</div>
+
+      <p>This reframes the strategic conversation about agentic adoption. The question is not <em>how much can we automate</em>. It is <em>what is our portfolio of operations, characterized by determinism level, and what is the trajectory of our exposure</em>. An organization that can answer this question has built an institution. An organization that cannot has rented one, and will discover the terms of the lease when the subsidies end.</p>
+    </div>
+  </section>
+
+  <!-- ============ BOOK VIII ============ -->
+  <section class="book" id="book-viii">
+    <div class="book-marker">Book VIII</div>
+    <h2 class="book-title">On the <em>stoa</em>,<br>and how the young shall learn</h2>
+    <p class="book-dek">Junior engineers as students at the painted colonnade — questioning, not executing.</p>
+    <div class="book-rule"></div>
+
+    <div class="prose">
+      <p class="lede">A great anxiety attends this transition. If agents perform the entry-level work — the tickets, the tests, the small refactors that once formed the junior engineer's apprenticeship — by what path will the next generation of seniors arise? The fear is real, and the answer requires returning to a much older model of teaching.</p>
+
+      <p>The Stoics taught beneath a painted colonnade in Athens. They did not lecture. They <em>argued</em>. The teachers defended positions and revised them under pressure. The students were present not to take notes but to <strong>ask questions</strong> — and the quality of their questions was the measure of their progress. The young Stoic was apprenticed to the practice of <em>reasoning in public</em>, not to the production of philosophical artifacts.</p>
+
+      <p>This is the model. Junior engineers join the conversations where intent is debated, where principles are applied, where refactors are proposed and defended. Their job is to <strong>question the decisions</strong>. The lead's job is to <strong>defend or elucidate</strong> the direction — and, when the question is sharper than the answer, to revise the direction. The juniors do not absorb learning by writing code agents could write. They absorb it by attending closely to the reasoning that produces good code, and by being held responsible for understanding it well enough to challenge it.</p>
+
+      <div class="dialogue">
+        <div class="speaker junior">Junior</div>
+        <p>But if I never write code as a beginner, how will I know enough to ask good questions about it?</p>
+        <div class="speaker lead">Lead</div>
+        <p>You will write code. The difference is that you will write it in service of understanding, not in service of output. You will read agent-produced code and ask why. You will propose alternatives in conversation and have them critiqued. You will sit in principled reviews and learn to see what the senior sees. The apprenticeship is not abolished. It is relocated from production to interpretation.</p>
+        <div class="speaker junior">Junior</div>
+        <p>And my career — what does my advancement look like, when the artifacts I produce are conversations and questions rather than commits?</p>
+        <div class="speaker lead">Lead</div>
+        <p>It looks the way it always should have. You advance by the quality of your judgment, demonstrated in the quality of your questions and, in time, in the quality of your defended positions. The commit count was always a poor proxy. We are simply no longer able to hide behind it.</p>
+      </div>
+
+      <p>The stoa is not a metaphor for nostalgia. It is a recognition that the highest-leverage human work — when execution is automated — is the <em>public practice of reasoned judgment</em>. The codebase's conscience, the intent's adjudication, the principle's defense. These cannot be learned in isolation. They are learned by attending closely to the practice and by being held accountable for one's questions.</p>
+
+      <p>This is what engineering becomes. Not the writing of code, which agents do well. But the disciplined, durable, contested practice of <em>thinking about systems together</em>, in the open, with the next generation present and questioning. The colonnade was always the better image for our craft than the factory floor. We are simply, at last, able to admit it.</p>
+    </div>
+  </section>
+
+  <!-- ============ TENETS ============ -->
+  <section class="book" id="tenets">
+    <div class="book-marker">Coda</div>
+    <h2 class="book-title">Eight <em>tenets</em>,<br>summarized</h2>
+    <p class="book-dek">The argument, compressed for those who would pin it to a wall.</p>
+    <div class="book-rule"></div>
+
+    <div class="tenets">
+      <div class="tenet">
+        <div class="tenet-num"></div>
+        <div>
+          <h3>The values of Agile endure; the rituals do not.</h3>
+          <p>Collaboration, working software, responding to change — these remain. Standups, story points, sprint ceremonies — these were scaffolding for a constraint that no longer binds.</p>
+        </div>
+      </div>
+
+      <div class="tenet">
+        <div class="tenet-num"></div>
+        <div>
+          <h3>Measure the system, not the labor.</h3>
+          <p>DORA for ability to respond. Customer outcomes for direction. Paired, never substituted. The team owns the whole, and is perceived by the whole.</p>
+        </div>
+      </div>
+
+      <div class="tenet">
+        <div class="tenet-num"></div>
+        <div>
+          <h3>Coordination is infrastructure, not ceremony.</h3>
+          <p>A shared kanban and an event-sourced intent log, accessed on equal terms by humans and agents. Tacit knowledge is no longer sufficient; the team's mind must be durable.</p>
+        </div>
+      </div>
+
+      <div class="tenet">
+        <div class="tenet-num"></div>
+        <div>
+          <h3>The unit of work is the tracer bullet.</h3>
+          <p>Vertical slices that prove the whole. Substrate changes are a second class of work, with blocking semantics during dedicated windows.</p>
+        </div>
+      </div>
+
+      <div class="tenet">
+        <div class="tenet-num"></div>
+        <div>
+          <h3>Refactor has a cadence, not a queue position.</h3>
+          <p>Drift compounds invisibly when no one feels friction. Repair must be scheduled, prioritized, and protected from the gravitational pull of feature work.</p>
+        </div>
+      </div>
+
+      <div class="tenet">
+        <div class="tenet-num"></div>
+        <div>
+          <h3>Principled review is the new load-bearing ritual.</h3>
+          <p>Principles versioned in the intent log. Reviews scheduled, structured, and authoritative. The senior engineer is the codebase's conscience, not its primary author.</p>
+        </div>
+      </div>
+
+      <div class="tenet">
+        <div class="tenet-num"></div>
+        <div>
+          <h3>Match determinism to the scenario; measure the cost trajectory.</h3>
+          <p>Every operation has a determinism level and a cost profile. Inference is reserved for genuine ambiguity. Success is declining token cost per unit of work, and shrinking exposure to supplier pricing over time.</p>
+        </div>
+      </div>
+
+      <div class="tenet">
+        <div class="tenet-num"></div>
+        <div>
+          <h3>Juniors learn at the stoa.</h3>
+          <p>They question. Leads defend, elucidate, and — when the question is good — revise. The apprenticeship is relocated from production to interpretation. The codebase's future depends on it.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="ornament">⁂</div>
+    <p>Composed in the manner of a dialogue, in the hope that it will be argued with.</p>
+    <p>The author expects to revise this treatise. He asks the reader to make that revision necessary.</p>
+    <div class="meta">Treatise · MMXXVI · Subject to amendment</div>
+  </footer>
+
+</div>
+
+<script>
+  // Scroll-based active TOC item
+  const sections = document.querySelectorAll('section.book, header.hero');
+  const tocItems = document.querySelectorAll('nav.toc li');
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const id = entry.target.id;
+        tocItems.forEach(item => {
+          item.classList.toggle('active', item.dataset.target === id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55% 0px' });
+
+  sections.forEach(s => observer.observe(s));
+
+  // Fade-up animation on scroll
+  const fadeObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        fadeObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.15 });
+
+  document.querySelectorAll('.book-title, .book-dek, .prose > *, .tenet, .comparison, .dialogue, .question, .answer')
+    .forEach(el => {
+      el.classList.add('fade-up');
+      fadeObserver.observe(el);
+    });
+</script>
+
+</body>
+</html>

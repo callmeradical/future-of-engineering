@@ -594,9 +594,9 @@
     <li data-target="book-ii"><a href="#book-ii">II · On Measure</a></li>
     <li data-target="book-iii"><a href="#book-iii">III · On Substrate</a></li>
     <li data-target="book-iv"><a href="#book-iv">IV · On Work</a></li>
-    <li data-target="book-v"><a href="#book-v">V · On Refactor</a></li>
+    <li data-target="book-v"><a href="#book-v">V · On Refactoring</a></li>
     <li data-target="book-vi"><a href="#book-vi">VI · On Principle</a></li>
-    <li data-target="book-vii"><a href="#book-vii">VII · On Cost</a></li>
+    <li data-target="book-vii"><a href="#book-vii">VII · On Determinism & Cost</a></li>
     <li data-target="book-viii"><a href="#book-viii">VIII · On the Stoa</a></li>
     <li data-target="tenets"><a href="#tenets">Tenets</a></li>
   </ol>
@@ -631,13 +631,13 @@
     <div class="book-rule"></div>
 
     <div class="prose">
-      <p class="lede">Engineering practice is undergoing a quiet inversion. For two decades, the dominant question was how to organize humans around the cost of producing software. That cost is collapsing. Agents now write, test, and ship code at velocities that make the rituals of the previous era look like the elaborate scaffolding they always were. What remains is the harder question — what humans are <em>for</em>, what they should be <em>doing</em>, and how the craft is to be <em>taught</em> when the doing is no longer the bottleneck.</p>
+      <p class="lede">Engineering practice is undergoing a quiet inversion. For two decades, the dominant question was how to organize humans around the cost of producing software. That cost is collapsing. Agents now write, test, and ship code at velocities that make the rituals of the previous era look like the elaborate scaffolding they always were. What remains is the harder question — what humans are <em>for</em>, where their judgment must <em>govern</em>, and how the craft is to be <em>taught</em> when execution is no longer the bottleneck.</p>
 
       <p>This treatise is not a methodology. Methodologies presume an answer. What follows is a set of provisional convictions, written down so they can be argued with — by readers, by colleagues, and, in the manner of the Stoa, by juniors who have earned the right to question by attending closely.</p>
 
       <div class="pull">The values of Agile endure. Its rituals do not. What replaces them is not less rigorous but differently rigorous — externalized into artifacts, made legible to humans and agents alike.</div>
 
-      <p>We proceed in eight short books. Each takes up one inheritance of the Agile era and examines what survives, what mutates, and what must be invented. The final book takes up the question of pedagogy — of how the young are to learn a craft whose entry-level work has been automated, and proposes the stoa as the model of a teaching practice fit for our moment.</p>
+      <p>We proceed in eight short books. Each takes up one inheritance of the Agile era and examines what survives, what mutates, and what must be invented. The final book takes up the question of pedagogy — of how the young are to learn a craft whose entry-level work has been automated — and proposes the Stoa as a model of teaching fit for our moment.</p>
     </div>
   </section>
 
@@ -649,17 +649,17 @@
     <div class="book-rule"></div>
 
     <div class="prose">
-      <p class="lede">Agile was a response to a specific bottleneck. Humans were slow, expensive, and bad at predicting what they would build. Nearly every ritual of the Agile canon — standups, sprints, story points, retrospectives — exists as scaffolding around those three constraints. The Manifesto's stated values are durable: <strong>individuals and interactions, working software, collaboration, responding to change.</strong> But its rituals are an implementation, and implementations are contingent on the cost structures of their era.</p>
+      <p class="lede">Agile arose in response to a specific bottleneck: human labor was slow, expensive, and ill-equipped to predict what software should become. Nearly every ritual of the Agile canon — standups, sprints, story points, retrospectives — was erected as scaffolding around those constraints. The Manifesto's stated values endure: <strong>individuals and interactions, working software, collaboration, responding to change.</strong> But its ceremonies are an implementation, and implementations remain contingent on the cost structures of their era.</p>
 
-      <p>When the cost of producing working software falls by an order of magnitude, the implementation no longer fits. This is not a failure of Agile. It is the success of Agile delivering us to a new constraint: not the cost of building, but the quality of <em>intent</em>, and the legibility of <em>judgment</em>.</p>
+      <p>When the cost of producing working software falls by an order of magnitude, the implementation no longer fits. This is not a failure of Agile. It is the success of Agile delivering us to a new constraint: not the cost of building, but the clarity of <em>intent</em> and the legibility of <em>judgment</em>.</p>
 
       <div class="question">
         <p>If the values endure, why does it matter whether we keep the rituals? Surely a daily standup costs little and may still be useful.</p>
       </div>
 
       <div class="answer">
-        <p>The ritual costs little only when its premises hold. A standup exists because humans forget context overnight and need a synchronizing checkpoint. Agents do not forget. The premise has changed, and the ritual now consumes time it does not earn back. Worse, it gives the team the comforting impression of coordination while the actual coordination — among agents, against a shared codebase — is happening elsewhere and unattended.</p>
-        <p>The question is not <em>does this ritual cost little</em>. It is <em>does this ritual still address the constraint it was invented for</em>. Most do not.</p>
+        <p>The ritual costs little only when its premises hold. A standup exists because humans forget context overnight and need a synchronizing checkpoint. Agents do not forget. The premise has changed, and the ritual now consumes time it does not earn back. Worse, it gives the team the comforting illusion of coordination while the actual coordination — among agents, against a shared codebase — occurs elsewhere, unobserved.</p>
+        <p>The question is not whether the ritual costs little; it is whether it still answers the constraint for which it was devised. Most do not.</p>
       </div>
 
       <div class="comparison">
@@ -676,11 +676,11 @@
         <div>
           <h4 class="now">The Era of Agentic Collaboration</h4>
           <ul>
-            <li>Context is durable, queryable, replayable</li>
-            <li>Throughput is elastic, near-zero marginal</li>
-            <li>Effort is no longer the scarce input</li>
-            <li>Friction signals do not arise from agents</li>
-            <li>The instrument must point elsewhere</li>
+            <li>Repositories retain durable, queryable context</li>
+            <li>Elastic pipelines deliver at near-zero marginal cost</li>
+            <li>Intent and judgment replace effort as scarce inputs</li>
+            <li>Principled reviews surface drift agents cannot feel</li>
+            <li>Operational metrics track system health directly</li>
           </ul>
         </div>
       </div>
@@ -695,11 +695,11 @@
     <div class="book-rule"></div>
 
     <div class="prose">
-      <p class="lede">Story points were a workaround. They existed because the honest measures — did the customer benefit, did the system remain healthy — were too slow, too expensive, or too contested to use as an inner loop. The proxy was scaffolding around a constraint that no longer binds. When work is cheap and observability is plentiful, we no longer need a proxy. We can measure the thing itself.</p>
+      <p class="lede">Story points were a workaround. They existed because the honest measures — did the customer benefit, did the system remain healthy — were too slow, too expensive, or too contested to use as an inner loop. The proxy was scaffolding around a constraint that no longer binds. When code generation is cheap and telemetry is plentiful, the surrogate falls away. We can measure the thing itself.</p>
 
-      <p>The thing itself is twofold. First, the team's <strong>ability to respond</strong> — measured in deployment frequency, lead time for change, mean time to recovery, change failure rate, and the time between feedback received and feedback addressed. These are not new. They are DORA. What is new is that they are now <em>operationally feasible</em> for ordinary teams, because the cost of building and maintaining the infrastructure to achieve them has collapsed.</p>
+      <p>The thing itself is twofold. First, the team's <strong>ability to respond</strong> — measured in deployment frequency, lead time for change, mean time to recovery, change failure rate, and the time between feedback received and feedback addressed. These are not novel inventions; they are the familiar DORA metrics. What is new is that they are now <em>operationally feasible</em> for ordinary teams, because the cost of building and maintaining the infrastructure to achieve them has collapsed.</p>
 
-      <p>Second, <strong>customer response</strong> — the ground truth of whether what was built was worth building. This metric is laggy, noisy, and, for some kinds of work, absent entirely. It is therefore not a sufficient inner loop, but it is the only sufficient outer loop. The two measures must be paired. DORA tells you whether your system is healthy. Customer response tells you whether you are aiming the healthy system at the right target.</p>
+      <p>Second, <strong>customer response</strong> — the ground truth of whether what was built was worth building. This signal is delayed, noisy, and, for certain classes of foundational work, absent entirely. It is therefore not a sufficient inner loop, but it is the only sufficient outer loop. The two measures must be paired: DORA metrics reveal whether the system is healthy; customer outcomes reveal whether that healthy system is aimed at the right target.</p>
 
       <div class="pull">The output of the system is everyone's responsibility. This is how a team measures itself, and how the organization should perceive the team.</div>
 
@@ -708,8 +708,8 @@
       </div>
 
       <div class="answer">
-        <p>This is the deepest objection to outcome-only measurement, and it must be answered directly. Work without a measurable customer is not invisible — it is <em>upstream</em>. Its value is realized in the customer-facing work that depends on it. Platform health, security posture, observability coverage — these are measured by their effects on the operational metrics, not by their own KPIs.</p>
-        <p>If the DORA numbers degrade, look upstream. If they hold under increasing load and complexity, the upstream work is doing its job. The team's job is to keep both the upstream substrate and the downstream outcomes in view, and not to confuse activity in either with progress.</p>
+        <p>This is the deepest objection to outcome-only measurement, and it must be answered directly. Work without a measurable customer is not invisible — it is <em>upstream</em>. Its value is realized in the customer-facing work that depends on it. Platform health, security posture, observability coverage — these are measured by their effects on operational metrics, not by insular KPIs.</p>
+        <p>If the DORA numbers degrade, look upstream. If they hold under increasing load and complexity, the upstream work is doing its job. The team's duty is to keep both the upstream substrate and downstream outcomes in view, never mistaking activity in either for progress.</p>
       </div>
     </div>
   </section>
@@ -724,7 +724,7 @@
     <div class="prose">
       <p class="lede">Human teams coordinate through tribal knowledge, Slack threads, half-remembered decisions, and the senior engineer's intuition. None of these are legible to agents. None of them are durable across personnel changes. None of them scale beyond the number of people who can hold the system in their heads. Agentic collaboration forces what good teams should have done anyway: <strong>externalize the coordination substrate into artifacts that humans and agents access on equal terms.</strong></p>
 
-      <p>The substrate has two parts. The first is a <strong>shared kanban</strong> against which all participants — human and agent — claim work, declare intent, and release locks. Not a Jira board updated after the fact, but a live, queryable representation of what is being done, by whom, and against what context. The second is an <strong>event-sourced intent log</strong>: a temporal record of what the product is supposed to be, appended to as the team's understanding evolves, and replayable by any new participant — junior engineer, agent, or auditor — to reconstruct the reasoning that led to the present.</p>
+      <p>The substrate has two parts. The first is a <strong>shared kanban</strong> against which all participants — human and agent — claim work, declare intent, and release locks. Not a Jira board updated after the fact, but a live, queryable representation of what is being done, by whom, and against what context. The second is an <strong>event-sourced intent log</strong>: a temporal record of what the product is intended to be, continuously appended as understanding evolves, and replayable by any new participant — junior engineer, agent, or auditor — to reconstruct the reasoning that produced the present state.</p>
 
       <div class="dialogue">
         <div class="speaker lead">Lead</div>
@@ -732,7 +732,7 @@
         <div class="speaker junior">Junior</div>
         <p>But intent conflicts — when two people declare incompatible futures for the same system — those cannot be resolved by appending to a log.</p>
         <div class="speaker lead">Lead</div>
-        <p>Correct. Conflicts in intent are resolved upstream of the log, in conversation, by humans. That is the irreducible human work. The log records the resolution, not the conflict. When we agree, we append. When we cannot agree, we do not task. This is the discipline.</p>
+        <p>Correct. Conflicts in intent are resolved upstream of the log, in conversation, by humans. That is the irreducible human work. The log records the resolution, not the conflict. When we agree, we append. When we disagree, we do not dispatch tasks. That is the discipline.</p>
       </div>
 
       <p>This is the deeper point. Agile imagined that ceremony among humans would carry the load of coordination. The new model abandons ceremony for <em>infrastructure</em>. The values — collaboration, working software, responding to change — survive intact. The mechanism is now an artifact rather than a meeting.</p>
@@ -747,17 +747,17 @@
     <div class="book-rule"></div>
 
     <div class="prose">
-      <p class="lede">The traditional ticket is a poor unit of work for an agent. It encodes a horizontal task — touch this file, modify this function, add this endpoint — that is locally sensible but globally underspecified. An agent given such a ticket produces locally correct code that may or may not cohere with what the feature actually needs. The result is the great pathology of agentic engineering: a million lines of plausible code that solves no problem.</p>
+      <p class="lede">The traditional ticket is a poor unit of work for an agent. It encodes a horizontal task — touch this file, modify this function, add this endpoint — that is locally sensible but globally underspecified. An agent given such a ticket produces locally correct code that may or may not cohere with what the feature actually needs. The result is the great pathology of agentic engineering: a million lines of plausible code that solve no problem.</p>
 
-      <p>The remedy is the <strong>tracer bullet</strong> — a thin vertical slice through the entire stack, end to end, that proves the feature works while remaining bounded enough for an agent to complete. A tracer bullet forces the agent to confront integration assumptions, surfaces architectural conflicts immediately, and produces deployable evidence rather than partial scaffolding. Tasks are decomposed from PRDs and LDDs into tracer bullets. Agents pull bullets from the shared board. Each bullet that lands is a tiny, complete demonstration that the system is converging toward the intent.</p>
+      <p>The remedy is the <strong>tracer bullet</strong> — a thin vertical slice through the entire stack, end to end, that proves the feature works while remaining bounded enough for an agent to complete. A tracer bullet forces the agent to confront integration assumptions, surfaces architectural conflicts immediately, and produces deployable evidence rather than partial scaffolding. High-level intents and system designs are decomposed into tracer bullets. Agents pull bullets from the shared board. Each bullet that lands is an immediate, verifiable proof that the system is converging toward the intended state.</p>
 
       <div class="question">
         <p>What of work that resists vertical slicing? A migration from REST to gRPC. A latency improvement at the platform layer. These cannot be tracer bullets without absurdity.</p>
       </div>
 
       <div class="answer">
-        <p>You have identified the second work primitive, which I will call the <strong>substrate change</strong>. Substrate changes are inherently horizontal — they reshape the ground that tracer bullets run on. They cannot proceed concurrently with feature work against the same surface, because they invalidate the assumptions feature work depends on.</p>
-        <p>The board therefore has at least two lanes. The feature lane runs tracer bullets continuously. The substrate lane runs during dedicated windows, with priority and exclusion: when a substrate change is in flight, feature work against the affected surface is suspended. This is honest about how software actually evolves, and it eliminates the failure mode where three agents diligently build against a surface a fourth agent is reshaping.</p>
+        <p>You have identified the second work primitive, which I will call the <strong>substrate change</strong>. Substrate changes are inherently horizontal — they reshape the ground upon which tracer bullets run. They cannot proceed concurrently with feature work against the same surface, because they invalidate the assumptions on which feature work depends.</p>
+        <p>The board therefore has at least two lanes. The feature lane runs tracer bullets continuously. The substrate lane runs during dedicated windows, with priority and exclusion: when a substrate change is in flight, feature work against the affected surface is suspended. This structure reflects how software actually evolves, and it eliminates the failure mode where three agents diligently build against a surface a fourth agent is reshaping.</p>
       </div>
     </div>
   </section>
@@ -765,14 +765,14 @@
   <!-- ============ BOOK V ============ -->
   <section class="book" id="book-v">
     <div class="book-marker">Book V</div>
-    <h2 class="book-title">On <em>refactor</em>,<br>and the rhythm of repair</h2>
+    <h2 class="book-title">On <em>refactoring</em>,<br>and the rhythm of repair</h2>
     <p class="book-dek">Technical debt has a cadence, not a backlog position.</p>
     <div class="book-rule"></div>
 
     <div class="prose">
-      <p class="lede">In the previous era, technical debt was treated as a ticket competing for priority against feature work. It nearly always lost. The result was a slow accumulation of substrate decay, paid down in occasional and grudging "stabilization sprints" that were really refactor windows in disguise. The new model makes the rhythm explicit. <strong>Refactor work is a class of work with blocking semantics, addressed in dedicated windows between releases.</strong></p>
+      <p class="lede">In the previous era, technical debt was treated as a ticket competing for priority against feature work. It nearly always lost. The result was a slow accumulation of substrate decay, paid down in occasional and grudging "stabilization sprints" that were really refactor windows in disguise. The new model makes the rhythm explicit. <strong>Refactoring is a primary class of work with blocking semantics, addressed in dedicated windows between releases.</strong></p>
 
-      <p>This is not a concession to engineering vanity. It is a structural necessity. Agents working in parallel against a codebase produce coherence drift faster than any individual agent can perceive — seventeen retry implementations, each locally correct, none consistent. Without scheduled repair, drift compounds until the codebase is no longer reasoned about. The product stalls not from lack of features but from the impossibility of adding any.</p>
+      <p>This is not a concession to engineering vanity. It is a structural necessity. Agents working in parallel against a codebase produce coherence drift faster than any individual agent can perceive — seventeen retry implementations, each locally correct, none consistent. Without scheduled repair, drift compounds until the codebase can no longer be reasoned about. The product stalls not from lack of features but from the impossibility of adding any.</p>
 
       <div class="pull">Features create drift. Reviews detect it. Intent reconciles it. Refactors resolve it. The loop must close, or the codebase decays.</div>
 
@@ -793,17 +793,17 @@
     <div class="book-rule"></div>
 
     <div class="prose">
-      <p class="lede">The naive intuition is that agents, being rule-followers, will produce principled code if simply told the principles. The actual dynamic is the opposite. Agents follow the local rules of the task they are given. They will produce code that is locally correct and globally incoherent unless something is actively defending the global shape of the system. The principles — SOLID, DRY, Twelve-Factor, whatever the team commits to — must be enforced externally and continuously, because the cognitive cost that once enforced them tacitly is no longer being paid.</p>
+      <p class="lede">The naive assumption is that agents, as rule-following systems, will produce principled code merely by being told the rules. The actual dynamic is the opposite. Agents follow the local rules of the task they are given. They will produce code that is locally correct and globally incoherent unless something actively defends the global shape of the system. The principles — SOLID, DRY, Twelve-Factor, whatever the team commits to — must be enforced externally and continuously, because the tacit human discipline that once guarded them during manual authoring is no longer exerted on every line.</p>
 
-      <p>This makes the <strong>scheduled principled review</strong> the load-bearing ritual of the new era. Where does the codebase violate the commitments the team has made? Where is duplication suggesting a missing abstraction? Where do dependencies point in directions that will trap us? Each finding, if it crosses a threshold, becomes refactor intent. The review is not aesthetic. It is the codebase's conscience, externalized into a recurring practice.</p>
+      <p>This makes the <strong>scheduled principled review</strong> the load-bearing ritual of the new era. Where does the codebase violate the commitments the team has made? Where is duplication suggesting a missing abstraction? Where do dependencies point in directions that will trap us? Each finding, if it crosses a threshold, becomes refactoring intent. The review is not aesthetic. It is the codebase's conscience, externalized into a recurring practice.</p>
 
       <div class="question">
         <p>How is this different from the architecture reviews we already do?</p>
       </div>
 
       <div class="answer">
-        <p>Three differences. First, cadence — it is scheduled, not summoned in moments of crisis. Second, output — it generates refactor intent on the shared substrate, not advisory notes. Third, authority — its findings have teeth, meaning they enter the substrate lane with priority over feature work when they exceed a defined threshold.</p>
-        <p>The principles themselves should live in the intent log, versioned and operationalized. Not "we follow DRY" as aphorism, but: "if logic appears in two places with the same reason to change, extract it; with different reasons, leave it." Agents need operational form. Humans need versioned commitments they can argue with.</p>
+        <p>Three differences. First, cadence — it is scheduled, not summoned in moments of crisis. Second, output — it generates refactoring intent on the shared substrate, not advisory notes. Third, authority — its findings have teeth: whenever violations exceed a defined threshold, they preempt feature work in the substrate lane.</p>
+        <p>The principles themselves should live in the intent log, versioned and operationalized. Not "we follow DRY" as aphorism, but: "if logic appears in two places with the same reason to change, extract it; when reasons to change diverge, leave them separated." Agents need operational form. Humans need versioned commitments they can argue with.</p>
       </div>
 
       <div class="pull">The senior engineer's role is not to write the hard code. It is to be the codebase's conscience — to lead the principled review, to defend the shape of the system, to know when to break it.</div>
@@ -818,13 +818,13 @@
     <div class="book-rule"></div>
 
     <div class="prose">
-      <p class="lede">The current era of agentic engineering operates inside a market condition that will not persist. Token pricing is subsidized to capture adoption. The models we depend on will be deprecated within a year. The contracts our organizations have signed bind us to spend levels chosen against assumptions that no longer hold. And the teams left to operate these systems are smaller than the teams that built them. Each factor alone is manageable. Stacked, they form a compounding liability that the math at the point of adoption does not capture, because the math assumes today's prices and today's headcount will endure. They will not.</p>
+      <p class="lede">The current era of agentic engineering operates inside a market condition that will not persist. Token pricing is subsidized to capture adoption. The models we depend on will be deprecated within a year. The contracts our organizations have signed bind us to spend levels chosen against assumptions that no longer hold. And the teams left to operate these systems are smaller than the teams that built them. Each factor alone is manageable. Compounded, they form a systemic liability that initial adoption models failed to capture, having assumed today's subsidized prices and existing headcount would endure. They will not.</p>
 
       <p>The discipline that meets this condition is not a slogan. It is a measurement practice. Every operation a system performs sits somewhere on a spectrum from <strong>pure code</strong> to <strong>pure inference</strong>, and every operation carries a cost profile — what it costs to perform today, what it would cost at its theoretical floor, and the trajectory connecting them. The engineering work is to characterize these profiles honestly, match the determinism level to what the scenario actually permits, and continuously move operations toward their cost floor as the scenarios they serve become legible enough to encode.</p>
 
       <div class="pull">An <code>if</code> statement is free, infinitely auditable, deterministically testable, and will run on any cloud in a decade. A model inference is none of those things. The default should reflect the asymmetry.</div>
 
-      <p>This is not anti-inference. There are scenarios whose input space is genuinely open, whose desired output requires novel judgment, whose conditions vary in ways no rule can anticipate. For these, inference does real work, and forcing determinism on them is its own pathology — brittleness disguised as discipline. The principle is not <em>deterministic-maximalism</em>. It is <strong>scenario-fit determinism</strong>: for each operation, match the determinism level to the structure the scenario actually has, with a strong default toward determinism because the bias of the field is currently toward over-using inference.</p>
+      <p>This is not anti-inference. There are scenarios whose input space is genuinely open, whose desired output requires novel judgment, whose conditions vary in ways no rule can anticipate. For these, inference does real work, and forcing determinism on them is its own pathology — brittleness disguised as discipline. The principle is not dogmatic determinism. It is <strong>scenario-fit determinism</strong>: for each operation, match the determinism level to the inherent structure of the problem, with a firm default toward determinism because the current bias of the field tilts toward overusing inference.</p>
 
       <div class="comparison">
         <div>
@@ -842,9 +842,9 @@
           <ul>
             <li>Compute cost of deterministic execution</li>
             <li>Minimum inference for true ambiguity</li>
-            <li>Predictable, auditable, portable</li>
-            <li>Independent of supplier pricing moves</li>
-            <li>Stable under deprecation cycles</li>
+            <li>Predictable, auditable, and portable execution</li>
+            <li>Independence from vendor pricing shifts</li>
+            <li>Stability across model deprecation cycles</li>
           </ul>
         </div>
       </div>
@@ -858,27 +858,27 @@
         <p>When all three answers point toward determinism, the inference cost is waste. When even one points toward inference, the inference is doing work. The honest engineer says so in either direction, and resists the temptation to reach for inference because it is novel or to force determinism because it is cheap.</p>
       </div>
 
-      <p>The principled review thus gains its sharpest instrument. For each operation in the system, the review asks: <strong>what is its determinism level, what is its cost profile, what is its trajectory?</strong> A successful system shows a growing inventory of operations whose cost is dominated by deterministic execution, a stable or shrinking set of operations that genuinely require inference, and an aggregate token cost per unit of work that declines over time. A failing system shows the inverse — operations whose inference cost is flat or growing, with no conversion work happening, with the team's exposure to supplier pricing increasing rather than decreasing.</p>
+      <p>The principled review thus gains its sharpest instrument. For each operation in the system, the review asks: <strong>what is its determinism level, what is its cost profile, what is its trajectory?</strong> A successful system shows a growing inventory of operations whose cost is dominated by deterministic execution, a stable or shrinking set of operations that genuinely require inference, and an aggregate token cost per unit of work that declines over time. A failing system shows the inverse — operations whose inference cost remains flat or grows, unmitigated by conversion to deterministic code, while exposure to supplier pricing steadily mounts.</p>
 
       <div class="pull">The measure of an agentic system is not what it can do. It is whether the cost of what it does is converging toward the floor — and whether its dependency on supplier pricing is shrinking, not growing, over time.</div>
 
-      <p>This reframes the strategic conversation about agentic adoption. The question is not <em>how much can we automate</em>. It is <em>what is our portfolio of operations, characterized by determinism level, and what is the trajectory of our exposure</em>. An organization that can answer this question has built an institution. An organization that cannot has rented one, and will discover the terms of the lease when the subsidies end.</p>
+      <p>This reframes the strategic conversation about agentic adoption. The question is not <em>how much can we automate?</em> It is: <em>what is our portfolio of operations, characterized by determinism level, and what is the trajectory of our exposure?</em> An organization that can answer this question has built an institution. An organization that cannot has rented one, and will discover the terms of the lease when the subsidies end.</p>
     </div>
   </section>
 
   <!-- ============ BOOK VIII ============ -->
   <section class="book" id="book-viii">
     <div class="book-marker">Book VIII</div>
-    <h2 class="book-title">On the <em>stoa</em>,<br>and how the young shall learn</h2>
+    <h2 class="book-title">On the <em>Stoa</em>,<br>and how the young shall learn</h2>
     <p class="book-dek">Junior engineers as students at the painted colonnade — questioning, not executing.</p>
     <div class="book-rule"></div>
 
     <div class="prose">
-      <p class="lede">A great anxiety attends this transition. If agents perform the entry-level work — the tickets, the tests, the small refactors that once formed the junior engineer's apprenticeship — by what path will the next generation of seniors arise? The fear is real, and the answer requires returning to a much older model of teaching.</p>
+      <p class="lede">A great anxiety attends this transition. If agents perform the entry-level work — the tickets, the tests, the small refactorings that once formed the junior engineer's apprenticeship — by what path will the next generation of senior engineers emerge? The fear is real, and the answer requires returning to a much older model of teaching.</p>
 
       <p>The Stoics taught beneath a painted colonnade in Athens. They did not lecture. They <em>argued</em>. The teachers defended positions and revised them under pressure. The students were present not to take notes but to <strong>ask questions</strong> — and the quality of their questions was the measure of their progress. The young Stoic was apprenticed to the practice of <em>reasoning in public</em>, not to the production of philosophical artifacts.</p>
 
-      <p>This is the model. Junior engineers join the conversations where intent is debated, where principles are applied, where refactors are proposed and defended. Their job is to <strong>question the decisions</strong>. The lead's job is to <strong>defend or elucidate</strong> the direction — and, when the question is sharper than the answer, to revise the direction. The juniors do not absorb learning by writing code agents could write. They absorb it by attending closely to the reasoning that produces good code, and by being held responsible for understanding it well enough to challenge it.</p>
+      <p>This is the model. Junior engineers join the conversations where intent is debated, where principles are applied, where refactorings are proposed and defended. Their job is to <strong>question the decisions</strong>. The lead's job is to <strong>defend or elucidate</strong> the direction — and, when the question is sharper than the answer, to revise the direction. Juniors do not learn the craft by writing boilerplate that agents generate in seconds. They learn by attending closely to the reasoning that produces sound architecture, and by being held responsible for understanding it well enough to challenge it.</p>
 
       <div class="dialogue">
         <div class="speaker junior">Junior</div>
@@ -891,9 +891,9 @@
         <p>It looks the way it always should have. You advance by the quality of your judgment, demonstrated in the quality of your questions and, in time, in the quality of your defended positions. The commit count was always a poor proxy. We are simply no longer able to hide behind it.</p>
       </div>
 
-      <p>The stoa is not a metaphor for nostalgia. It is a recognition that the highest-leverage human work — when execution is automated — is the <em>public practice of reasoned judgment</em>. The codebase's conscience, the intent's adjudication, the principle's defense. These cannot be learned in isolation. They are learned by attending closely to the practice and by being held accountable for one's questions.</p>
+      <p>The Stoa is not an exercise in nostalgia. It is the recognition that the highest-leverage human work — when execution is automated — is the <em>public practice of reasoned judgment</em>: adjudicating intent, defending principles, and acting as the conscience of the codebase. These capabilities cannot be cultivated in isolation. They are learned by participating directly in the discourse and being held accountable for the acuity of one's questions.</p>
 
-      <p>This is what engineering becomes. Not the writing of code, which agents do well. But the disciplined, durable, contested practice of <em>thinking about systems together</em>, in the open, with the next generation present and questioning. The colonnade was always the better image for our craft than the factory floor. We are simply, at last, able to admit it.</p>
+      <p>This is what engineering becomes: not merely the writing of code, which agents execute with ease, but the disciplined, durable, contested practice of <em>thinking about systems together</em> — in the open, with the next generation present and questioning. The colonnade was always a truer image for our craft than the factory floor. We are simply, at last, compelled to admit it.</p>
     </div>
   </section>
 
@@ -940,7 +940,7 @@
       <div class="tenet">
         <div class="tenet-num"></div>
         <div>
-          <h3>Refactor has a cadence, not a queue position.</h3>
+          <h3>Refactoring has a cadence, not a queue position.</h3>
           <p>Drift compounds invisibly when no one feels friction. Repair must be scheduled, prioritized, and protected from the gravitational pull of feature work.</p>
         </div>
       </div>
@@ -964,7 +964,7 @@
       <div class="tenet">
         <div class="tenet-num"></div>
         <div>
-          <h3>Juniors learn at the stoa.</h3>
+          <h3>Juniors learn at the Stoa.</h3>
           <p>They question. Leads defend, elucidate, and — when the question is good — revise. The apprenticeship is relocated from production to interpretation. The codebase's future depends on it.</p>
         </div>
       </div>
@@ -974,7 +974,7 @@
   <footer>
     <div class="ornament">⁂</div>
     <p>Composed in the manner of a dialogue, in the hope that it will be argued with.</p>
-    <p>The author expects to revise this treatise. He asks the reader to make that revision necessary.</p>
+    <p>The author expects to revise this treatise, and invites the reader to make that revision necessary.</p>
     <div class="meta">Treatise · MMXXVI · Subject to amendment</div>
   </footer>
 
